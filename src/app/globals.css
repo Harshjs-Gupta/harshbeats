@@ -1,0 +1,106 @@
+@import "tailwindcss";
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"); */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+/* Add this block to your existing src/app/globals.css (keep your Tailwind
+   @tailwind directives above it). */
+
+
+:root {
+    --canvas: #FEE6C9;
+  --cream: #f8f4ee;
+  --ink: #11100e;
+  --bronze: #77563A;
+  --taupe: #716b64;
+  --hairline: #d8d0c5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--bronze);
+  color: var(--cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 45s) linear infinite;
+}
+.marquee-reverse .marquee-track { animation-direction: reverse; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+.contactBg{
+  background-image: url('/images/sections/contactBg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@property --orbit-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes orbit {
+  from {
+    --orbit-angle: 0deg;
+  }
+
+  to {
+    --orbit-angle: 360deg;
+  }
+}
+
+.orbit-item {
+  animation: orbit 40s linear infinite;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--orbit-angle))
+    translate(var(--x), var(--y))
+    rotate(calc(-1 * var(--orbit-angle)));
+}
