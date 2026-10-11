@@ -14,7 +14,7 @@ const ExperienceScene = forwardRef<HourglassHandle>(
   function ExperienceScene(_, ref) {
     return (
       <Canvas
-        className="!absolute !inset-0 !h-full !w-full"
+        className="absolute! inset-0! h-full! w-full!"
         dpr={[1, 1.5]}
         camera={{
           position: [0, 0, 8],
